@@ -29,9 +29,9 @@ echo "
 
 
         bios mode               - $system
-	root partition		- $rootpart
-	boot partition		- $bootpart
-	swap partition		- $swappart
+		root partition			- $rootpart
+		boot partition			- $bootpart
+		swap partition			- $swappart
         locale                  - $locale
         timezone                - $timezone
         user                    - $username
@@ -109,7 +109,7 @@ printanswer
 read -p "       Your choice: " part
     case $part in
     yes)
-    gparted
+    cfdisk
     ;;
     s)
     ;;
