@@ -650,7 +650,7 @@ then
 
     if [ -n $display ]
     then
-        arch-chroot /mnt systemctl enable display
+        arch-chroot /mnt systemctl enable $display
     fi
 
 ########################################################
