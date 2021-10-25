@@ -591,6 +591,7 @@ else
 	mkfs.ext4 /dev/$bootpart
 	mkdir /mnt/boot
 	mount /dev/$bootpart /mnt/boot
+fi
 
 pacstrap /mnt base base-devel networkmanager $kernel $kernel-headers linux-firmware grub os-prober efibootmgr nvim
 
