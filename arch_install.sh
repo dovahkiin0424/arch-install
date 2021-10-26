@@ -4,7 +4,7 @@ BLUE=$(tput setaf 4)
 GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 WHITE=$(tput sgr0)
-LSBLK=lsblk
+LSBLK=$(lsblk)
 
 clear
 echo "${GREEN}Welcome to my arch install script!${WHITE}"
@@ -30,9 +30,9 @@ echo "
 
 
         bios mode               - $system
-	    root partition          - $rootpart
-	    boot partition          - $bootpart
-	    swap partition          - $swappart
+        root partition          - $rootpart
+        boot partition          - $bootpart
+        swap partition          - $swappart
         locale                  - $locale
         timezone                - $timezone
         user                    - $username
@@ -52,16 +52,20 @@ echo "        network                 - $network
     ${GREEN}╚══════════════════════════════════════════════════════════════╝${WHITE}"
 }
 printanswer(){
-echo "    ${GREEN}╔══════════════════════════════════════════════════════════════╗${WHITE}"
-echo "$answer"
-echo "    ${GREEN}╚══════════════════════════════════════════════════════════════╝${WHITE}"
+echo "    ${GREEN}╔══════════════════════════════════════════════════════════════╗${WHITE}
+$answer
+    ${GREEN}╚══════════════════════════════════════════════════════════════╝${WHITE}"
 }
 
 printpart(){
-echo "    ${GREEN}╔══════════════════════════════════════════════════════════════╗${WHITE}"
-echo "${BLUE}Partitioning...${WHITE}"
-echo"${LSBLK}"
-echo "    ${GREEN}╚══════════════════════════════════════════════════════════════╝${WHITE}"
+echo "   ${GREEN}╔══════════════════════════════════════════════════════════════╗${WHITE}
+        
+          ${BLUE}Partitioning...${WHITE}
+
+
+          $LSBLK
+
+    ${GREEN}╚══════════════════════════════════════════════════════════════╝${WHITE}"
 }
 
 answersystem(){
