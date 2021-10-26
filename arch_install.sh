@@ -26,28 +26,28 @@ printgraph(){
 echo "
     ${GREEN}╔══════════════════════════════════════════════════════════════╗${WHITE}
 
-       your choice
+         ${BLUE}your choice${WHITE}
 
 
-        bios mode               - $system
-        root partition          - $rootpart
-        boot partition          - $bootpart
-        swap partition          - $swappart
-        locale                  - $locale
-        timezone                - $timezone
-        user                    - $username
-        hostname                - $hostname
-        kernel                  - $kernel"
+            bios mode               - $system
+            root partition          - $rootpart
+            boot partition          - $bootpart
+            swap partition          - $swappart
+            locale                  - $locale
+            timezone                - $timezone
+            user                    - $username
+            hostname                - $hostname
+            kernel                  - $kernel"
 if [ "$system" = EFI ]
 then
-echo "        (EFI) bootloader name   - $efiboot"
+echo "            (EFI) bootloader name   - $efiboot"
 else
-echo "        (BIOS) disk for grub    - $biosdisk"
+echo "            (BIOS) disk for grub    - $biosdisk"
 fi
-echo "        network                 - $network
-        desktop environment     - $desktop
-        display manager         - $display
-        additional packages     - $extrapackages
+echo "            network                 - $network
+            desktop environment     - $desktop
+            display manager         - $display
+            additional packages     - $extrapackages
 
     ${GREEN}╚══════════════════════════════════════════════════════════════╝${WHITE}"
 }
@@ -58,12 +58,12 @@ $answer
 }
 
 printpart(){
-echo "   ${GREEN}╔══════════════════════════════════════════════════════════════╗${WHITE}
-        
-          ${BLUE}Partitioning...${WHITE}
+echo "    ${GREEN}╔══════════════════════════════════════════════════════════════╗${WHITE}
+
+         ${BLUE}Partitioning...${WHITE}
 
 
-          $LSBLK
+$(lsblk | awk '{print "            " $0}')
 
     ${GREEN}╚══════════════════════════════════════════════════════════════╝${WHITE}"
 }
@@ -81,7 +81,7 @@ answer="
 "
 printgraph
 printanswer
-read -p "       Your choice: " systemans
+read -p "           Your choice: " systemans
     case $systemans in
     yes)
         if [ "$system" = EFI ]
@@ -111,7 +111,7 @@ answer="
 "
 printpart
 printanswer
-read -p "       Your choice: " part
+read -p "         Your choice: " part
     case $part in
     yes)
     cfdisk
@@ -133,7 +133,7 @@ answer="
 "
 printpart
 printanswer
-read -p "       Your choice: " rootpart
+read -p "         Your choice: " rootpart
 }
 
 answerbootpart(){
@@ -145,7 +145,7 @@ answer="
 "
 printpart
 printanswer
-read -p "       Your choice: " bootpart
+read -p "         Your choice: " bootpart
 }
 
 answerswappart(){
@@ -157,7 +157,7 @@ answer="
 "
 printpart
 printanswer
-read -p "       Your choice: " swappart
+read -p "         Your choice: " swappart
     case $swappart in
     yes)
 	swap
@@ -180,7 +180,7 @@ answer="
 "
 printpart
 printanswer
-read -p "       Your choice: " swappart
+read -p "         Your choice: " swappart
 
 mkswap /dev/$swappart
 swapon /dev/$swappart
@@ -198,7 +198,7 @@ answer="
 "
 printgraph
 printanswer
-read -p "       Your choice: " localeans
+read -p "         Your choice: " localeans
     if [ -z "$localeans" ]
     then
     choicexit
@@ -227,7 +227,7 @@ answer='
 '
 printgraph
 printanswer
-read -p "       Your choice: " timezoneans
+read -p "         Your choice: " timezoneans
     if [ -z "$timezoneans" ]
     then
     choicexit
@@ -255,7 +255,7 @@ answer='
 '
 printgraph
 printanswer
-read -p "       Your choice: " usernameans
+read -p "         Your choice: " usernameans
     if [ -z "$usernameans" ]
     then
     choicexit
@@ -280,7 +280,7 @@ answer="
 "
 printgraph
 printanswer
-read -p "       Your choice: " hostnameans
+read -p "         Your choice: " hostnameans
     if [ -z $hostnameans ]
     then
     choicexit
@@ -307,7 +307,7 @@ answer='
 '
 printgraph
 printanswer
-read -p "       Your choice: " kernelans
+read -p "         Your choice: " kernelans
     case $kernelans in
     1)
     kernel=linux
@@ -339,7 +339,7 @@ answersystemadd(){
     printanswer
     lsblk
     echo " "
-    read -p "       Your choice: " biosdiskans
+    read -p "         Your choice: " biosdiskans
         if [ -z "$biosdiskans" ]
         then
         choicexit
@@ -364,7 +364,7 @@ answersystemadd(){
     '
     printgraph
     printanswer
-    read -p "       Your choice: " efibootans
+    read -p "         Your choice: " efibootans
     echo " "
         if [ -z "$efibootans" ]
         then
@@ -397,7 +397,7 @@ answer='
 '
 printgraph
 printanswer
-read -p "       Your choice: " desktopans
+read -p "         Your choice: " desktopans
     if [ -z "$desktopans" ]
     then
     choicexit
@@ -427,7 +427,7 @@ answer='
 '
 printgraph
 printanswer
-read -p "       Your choice: " displayans
+read -p "         Your choice: " displayans
     if [ -z "$displayans" ]
     then
     choicexit
@@ -456,7 +456,7 @@ answer='
 '
 printgraph
 printanswer
-read -p "       Your choice: " extrapackagesans
+read -p "         Your choice: " extrapackagesans
     if [ -z $extrapackagesans ]
     then
     choicexit
@@ -485,7 +485,7 @@ answer='
 '
 printgraph
 printanswer
-read -p "       Your choice: " readyans
+read -p "         Your choice: " readyans
     if [ -z $readyans ]
     then
     choicexit
@@ -538,7 +538,7 @@ answerending(){
          any) - reboot
     '
     printanswer
-    read -p "       Your choice: " endingans
+    read -p "         Your choice: " endingans
     case $endingans in
         1)
         clear
