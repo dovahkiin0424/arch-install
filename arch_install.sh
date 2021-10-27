@@ -598,7 +598,7 @@ else
 	mount /dev/$bootpart /mnt/boot
 fi
 
-pacstrap /mnt base base-devel networkmanager $kernel $kernel-headers linux-firmware grub os-prober efibootmgr nvim
+pacstrap /mnt base base-devel networkmanager $kernel $kernel-headers linux-firmware grub os-prober efibootmgr neovim
 
 if [ -n "$desktop" ]
 then
