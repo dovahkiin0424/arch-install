@@ -4,7 +4,6 @@ BLUE=$(tput setaf 4)
 GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 WHITE=$(tput sgr0)
-LSBLK=$(lsblk)
 
 clear
 echo "${GREEN}Welcome to my arch install script!${WHITE}"
