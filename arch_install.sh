@@ -641,7 +641,7 @@ EFI)
 ;;
 esac
     
-arch-chroot /mnt systemclt enable --now NetworkManager
+arch-chroot /mnt systemctl enable --now NetworkManager
 
 if [ -n $display ]
 then
